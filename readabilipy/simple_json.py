@@ -43,7 +43,9 @@ def simple_json_from_html_string(html, content_digests=False, node_indexes=False
         "date": None,
         "content": None,
         "plain_content": None,
-        "plain_text": None
+        "plain_text": None,
+        "textContent": None,
+        "siteName": None,
     }
     # Populate article fields from readability fields where present
     if input_json:
@@ -53,6 +55,10 @@ def simple_json_from_html_string(html, content_digests=False, node_indexes=False
             article_json["byline"] = input_json["byline"]
         if "date" in input_json and input_json["date"]:
             article_json["date"] = input_json["date"]
+        if "textContent" in input_json and input_json["textContent"]:
+            article_json["textContent"] = input_json["textContent"]
+        if "siteName" in input_json and input_json["siteName"]:
+            article_json["siteName"] = input_json["siteName"]
         if "content" in input_json and input_json["content"]:
             article_json["content"] = input_json["content"]
             article_json["plain_content"] = plain_content(article_json["content"], content_digests, node_indexes)
